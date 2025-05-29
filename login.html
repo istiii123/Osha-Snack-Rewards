@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Reward Koin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Login</h2>
+
+  <div class="profile-box">
+    <label>Nama Pengguna:</label><br>
+    <input type="text" id="loginNama" placeholder="Masukkan nama"><br><br>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    function login() {
+      const nama = document.getElementById("loginNama").value.trim();
+      const namaTersimpan = localStorage.getItem("namaPengguna");
+
+      if (nama === "") {
+        alert("Nama tidak boleh kosong.");
+        return;
+      }
+
+      if (nama === namaTersimpan) {
+        window.location.href = "profile.html";
+      } else {
+        alert("Nama tidak ditemukan. Silakan daftar dulu.");
+      }
+    }
+  </script>
+</body>
+</html>
