@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profil - Reward Koin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Profil Pengguna</h2>
+
+  <div class="profile-box">
+    <p><strong>Nama:</strong> <span id="namaPengguna">-</span></p>
+    <p><strong>Saldo Koin:</strong> <span id="saldoKoin">0</span> koin</p>
+
+    <button onclick="tambahKoin()">Tambah 10 Koin</button>
+    <button onclick="tukarKoin()">Tukar 50 Koin</button>
+  </div>
+
+  <script>
+    const nama = localStorage.getItem("namaPengguna");
+    const saldo = localStorage.getItem("saldoKoin");
+
+    if (!nama || !saldo) {
+      alert("Silakan login atau daftar dulu.");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("namaPengguna").textContent = nama;
+      document.getElementById("saldoKoin").textContent = saldo;
+    }
+
+    function tambahKoin() {
+      let saldo = parseInt(localStorage.getItem("saldoKoin"));
+      saldo += 10;
+      localStorage.setItem("saldoKoin", saldo);
+      document.getElementById("saldoKoin").textContent = saldo;
+      alert("Koin bertambah 10!");
+    }
+
+    function tukarKoin() {
+      let saldo = parseInt(localStorage.getItem("saldoKoin"));
+      if (saldo >= 50) {
+        saldo -= 50;
+        localStorage.setItem("saldoKoin", saldo);
+        document.getElementById("saldoKoin").textContent = saldo;
+        alert("Berhasil tukar 50 koin!");
+      } else {
+        alert("Koin tidak cukup.");
+      }
+    }
+  </script>
+</body>
+</html>
