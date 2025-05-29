@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daftar - Reward Koin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Pendaftaran</h2>
+
+  <div class="profile-box">
+    <label>Nama Pengguna:</label><br>
+    <input type="text" id="namaInput" placeholder="Masukkan nama Anda"><br><br>
+    <button onclick="daftar()">Daftar</button>
+  </div>
+
+  <script>
+    function daftar() {
+      const nama = document.getElementById("namaInput").value.trim();
+
+      if (nama === "") {
+        alert("Nama tidak boleh kosong.");
+        return;
+      }
+
+      localStorage.setItem("namaPengguna", nama);
+      localStorage.setItem("saldoKoin", "0");
+      window.location.href = "profile.html";
+    }
+  </script>
+</body>
+</html>
